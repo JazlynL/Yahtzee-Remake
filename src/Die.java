@@ -15,7 +15,7 @@ public class Die {
     }
 
     public void roll(){
-        faceUpValue = (int) ((Math.random() + numberOfSides) + 1) ;
+        faceUpValue = (int) ((Math.random() * numberOfSides) + 1) ;
 
     }
 }
