@@ -1,3 +1,5 @@
+package HighLow;
+
 public class Die {
 // two terms I learned is the difference between override , and over load
     /*  overload : this occurs when two or more methods in the same class have the same name but different
