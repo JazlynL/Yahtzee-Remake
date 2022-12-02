@@ -1,5 +1,3 @@
-import HighLow.Die;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,14 +8,22 @@ public class Cup {
 
     public Cup(){
         while(dice.size() < 5){
+            Die newDice = new Die();
+            newDice.roll();
+            System.out.println(newDice);
             dice.add(new Die());
         }
+
     }
 
     public void roll(){
         for(Die die : dice){
             die.roll();
         }
+
+
+
+
     }
 
 
@@ -37,10 +43,14 @@ public class Cup {
 
     public String displayCup(){
         String output = "";
-        for(Die die: dice){
+        for(Die die : dice){
+            System.out.println(die.faceUpValue);
             output += die.faceUpValue + " ";
         }
+
+
         return output.trim();
+
     }
 
     public List<Integer> parseInteger(String input){
