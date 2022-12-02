@@ -5,13 +5,19 @@ public class Yahtzee {
    public  Player player;
    private  Scanner scanner = new Scanner(System.in);
 
+   private int totalScore = 0;
+
+   private int finalScore = 0;
+
    private  final int ROUND = 5;
 
 
  public Yahtzee(){
+
+
      System.out.println("What is your name?! ");
-     String name = scanner.nextLine();
       player = new Player(scanner.nextLine().trim());
+
 
 
  }
@@ -20,11 +26,15 @@ public class Yahtzee {
  // making it  so the player gets 5 turns
     public void play() {
 
-        for(int i = 0 ; i < ROUND ; i++){
+      for(int round = 1 ; round<= ROUND ; round++){
 
 
-            turn();}
+          int score = turn(round);
+          finalScore += score;
+      }
 
+      //
+        System.out.println("Final score: "+ finalScore);
 
 
 
@@ -34,27 +44,38 @@ public class Yahtzee {
 
 
         System.out.println("Which dice  you  want to re roll? (1-5)");
+
         String input = scanner.nextLine();
+
         player.myCup.roll(player.myCup.parseInteger(input));
+
+
+
 
     }
 
-    public void turn() {
+    public int turn(int round ) {
 
 
-            player.myCup.roll();
-
+        player.myCup.roll();
 
         for (int i = 0; i < 2; i++) {
-            System.out.println(myCup.displayCup());
+
+
+            System.out.println(player.myCup.displayCup());
             getSelections();
+
 
         }
 
-        System.out.println(myCup.displayCup());
 
+        int score = player.updateScore();
+        System.out.println(player.myCup.displayCup());
 
-        player.updateScore();
+        totalScore += score;
+        System.out.println(
+                "Your whole score " + totalScore);
+        return totalScore;
     }
 
 
